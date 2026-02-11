@@ -1,6 +1,10 @@
 # AutoEDClub
 An extension to auto-complete EDClub/TypingClub exercises
 
+# Notice
+
+I have been made aware the extension appears to not work as intended as of recent. This is presumed to be caused by a change in how Chromium based browsers deal with extensions now. *I'm fully aware of this issue and I will try to release an updated version once I get the time to do so.*
+
 ## Usage
 
 Press `F8` to toggle auto-completion, to customize your speeds, you may change the *keystroke delay* and *delay variation* to your liking in the popup menu of the extension.
