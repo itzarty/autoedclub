@@ -4,7 +4,7 @@
 	"name": "AutoEDClub",
 	"author": "Arty",
 	"description": "A chromium extension to auto-complete EDClub exercises",
-	"version": "1.1",
+	"version": "1.2.0",
 	"content_scripts": [
 		{
 			"js": [ "AutoEDClub/injection.js" ],

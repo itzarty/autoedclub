@@ -1,4 +1,3 @@
-
 const $s = selector => document.querySelector( selector );
 
 const ksdElement = $s( '#_aedc_ksd' );

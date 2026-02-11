@@ -1,4 +1,3 @@
-
 let keystrokeDelay = 100;
 let delayVariation = 10;
 let mistakeChance = 0;
@@ -9,25 +8,16 @@ element.type = 'text/javascript';
 element.src = chrome.runtime.getURL( 'AutoEDClub/core.js' );
 document.body.appendChild( element );
 
-document.onkeydown = e => {
+document.addEventListener( 'keydown', event => {
+	if( event.key != 'F8' ) return;
 
-	if( e.key == 'F8' ) {
-
-		chrome.storage.local.get( [ 'keystrokeDelay', 'delayVariation', 'mistakeChance', 'correctionTime' ], res => {
-
-			typeof res[ 'keystrokeDelay' ] == 'number' ? keystrokeDelay = res[ 'keystrokeDelay' ] : chrome.storage.local.set( { keystrokeDelay } )
-			typeof res[ 'delayVariation' ] == 'number' ? delayVariation = res[ 'delayVariation' ] : chrome.storage.local.set( { delayVariation } )
-			typeof res[ 'mistakeChance' ] == 'number' ? mistakeChance = res[ 'mistakeChance' ] : chrome.storage.local.set( { mistakeChance } )
-			typeof res[ 'correctionTime' ] == 'number' ? correctionTime = res[ 'correctionTime' ] : chrome.storage.local.set( { correctionTime } )
-
-			document.dispatchEvent( new CustomEvent( 'AEDC', {
-
-				detail: { keystrokeDelay, delayVariation, mistakeChance, correctionTime } 
-
-			} ) );
-
-		} );
-
-	}
-
-}
+	chrome.storage.local.get( [ 'keystrokeDelay', 'delayVariation', 'mistakeChance', 'correctionTime' ], res => {
+		typeof res[ 'keystrokeDelay' ] == 'number' ? keystrokeDelay = res[ 'keystrokeDelay' ] : chrome.storage.local.set( { keystrokeDelay } )
+		typeof res[ 'delayVariation' ] == 'number' ? delayVariation = res[ 'delayVariation' ] : chrome.storage.local.set( { delayVariation } )
+		typeof res[ 'mistakeChance' ] == 'number' ? mistakeChance = res[ 'mistakeChance' ] : chrome.storage.local.set( { mistakeChance } )
+		typeof res[ 'correctionTime' ] == 'number' ? correctionTime = res[ 'correctionTime' ] : chrome.storage.local.set( { correctionTime } )
+		document.dispatchEvent( new CustomEvent( 'AEDC', {
+			detail: { keystrokeDelay, delayVariation, mistakeChance, correctionTime } 
+		} ) );
+	} );
+} );
